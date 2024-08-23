@@ -4,7 +4,6 @@
 
 # DreamVoice: Text-guided Voice Conversion
 
---------------------
 
 ## Introduction
 
@@ -19,15 +18,45 @@ For more details, please check our interspeech paper: [DreamVoice](https://arxiv
 🎵 Listen to [examples](https://mydemo.page)
 
 
-# Model Usage
+## Installation
 
-To load the models, you need to install packages:
-
+Make sure you have `git-lfs` installed:
 ```
+git lfs install
+```
+Clone the repository and install the dependencies:
+```
+git clone git@github.com:myshell-ai/DreamVoice.git
+cd DreamVoice
 pip install -r requirements.txt
 ```
 
-Then you can use the model with the following code:
+## Usage
+
+You can use the model with the following code:
+
+- End-to-end mode (DreamVC)
+
+```python
+from dreamvoice import DreamVoice
+
+# Initialize DreamVoice in end-to-end mode with CUDA device
+dreamvoice = DreamVoice(mode='end2end', device='cuda')
+# Provide the path to the content audio and generate the converted audio
+gen_end2end, sr = dreamvoice.genvc('examples/test1.wav', prompt)
+# Save the converted audio
+dreamvoice.save_audio('gen_end2end.wav', gen_end2end, sr)
+
+# Note: End-to-end mode does not support saving speaker embeddings
+# To use a voice generated in end-to-end mode, switch back to plugin mode
+# and extract the speaker embedding from the generated audio
+# Switch back to plugin mode
+dreamvoice = DreamVoice(mode='plugin', device='cuda')
+# Load the speaker audio from the previously generated file
+gen_end2end2, sr = dreamvoice.simplevc('examples/test2.wav', speaker_audio='gen_end2end.wav')
+# Save the new converted audio
+dreamvoice.save_audio('gen_end2end2.wav', gen_end2end2, sr)
+```
 
 - Plugin mode (DreamVG + DiffVC)
 
@@ -50,28 +79,6 @@ dreamvoice.load_spk_embed('voice_stash1.pt')
 # Use the saved speaker embedding for another audio sample
 gen_audio2, sr = dreamvoice.simplevc('examples/test2.wav', use_spk_cache=True)
 dreamvoice.save_audio('gen2.wav', gen_audio2, sr)
-```
-- End-to-end mode (DreamVC)
-
-```python
-from dreamvoice import DreamVoice
-
-# Initialize DreamVoice in end-to-end mode with CUDA device
-dreamvoice = DreamVoice(mode='end2end', device='cuda')
-# Provide the path to the content audio and generate the converted audio
-gen_end2end, sr = dreamvoice.genvc('examples/test1.wav', prompt)
-# Save the converted audio
-dreamvoice.save_audio('gen_end2end.wav', gen_end2end, sr)
-
-# Note: End-to-end mode does not support saving speaker embeddings
-# To use a voice generated in end-to-end mode, switch back to plugin mode
-# and extract the speaker embedding from the generated audio
-# Switch back to plugin mode
-dreamvoice = DreamVoice(mode='plugin', device='cuda')
-# Load the speaker audio from the previously generated file
-gen_end2end2, sr = dreamvoice.simplevc('examples/test2.wav', speaker_audio='gen_end2end.wav')
-# Save the new converted audio
-dreamvoice.save_audio('gen_end2end2.wav', gen_end2end2, sr)
 ```
 
 - One-shot Voice Conversion (DiffVC)
