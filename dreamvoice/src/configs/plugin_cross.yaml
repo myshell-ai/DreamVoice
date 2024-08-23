@@ -1,0 +1,39 @@
+version: 1.0
+
+system: "cross"
+
+model:
+  cls_embedding:
+    content_dim: 768
+    content_hidden: 256
+
+  unet:  
+    sample_size: [1, 1]
+    in_channels: 256
+    out_channels: 256
+    layers_per_block: 2
+    block_out_channels: [256]
+    down_block_types:
+      [
+        "CrossAttnDownBlock2D",
+      ]
+    up_block_types:
+      [
+        "CrossAttnUpBlock2D",
+      ]
+    attention_head_dim: 32
+    cross_attention_dim: 768
+
+scheduler:
+  num_train_steps: 1000
+  beta_schedule: 'linear'
+  beta_start: 0.0001
+  beta_end: 0.02
+  num_infer_steps: 50
+  rescale_betas_zero_snr: true
+  timestep_spacing: "trailing"
+  clip_sample: false
+  prediction_type: 'v_prediction'
+  scale: 0.05 
+  shift: -0.035
+    

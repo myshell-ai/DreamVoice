@@ -1,0 +1,26 @@
+version: 1.0
+
+sample_rate: 24000
+vocoder_path: 'ckpts/bigvgan_24k/g_01000000.pt'
+vocoder_url: 'https://huggingface.co/myshell-ai/DreamVoice/resolve/main/dreamvoice/ckpts/bigvgan_24k/g_01000000.pt'
+vocoder_config_path: 'ckpts/bigvgan_24k/config.json'
+vocoder_config_url: 'https://huggingface.co/myshell-ai/DreamVoice/resolve/main/dreamvoice/ckpts/bigvgan_24k/config.json'
+
+speaker_path: 'ckpts/spk_encoder/pretrained.pt'
+speaker_url: 'https://huggingface.co/myshell-ai/DreamVoice/resolve/main/dreamvoice/ckpts/spk_encoder/pretrained.pt'
+lm_path: 'google/flan-t5-base'
+
+dreamvc:
+  config_path: 'src/configs/diffvc_cross.yaml'
+  ckpt_path: 'ckpts/dreamvc_cross.pt'
+  ckpt_url: 'https://huggingface.co/myshell-ai/DreamVoice/resolve/main/dreamvoice/ckpts/dreamvc_cross.pt'
+
+rediffvc:
+  config_path: 'src/configs/diffvc_base.yaml'
+  ckpt_path: 'ckpts/dreamvc_base.pt'
+  ckpt_url: 'https://huggingface.co/myshell-ai/DreamVoice/resolve/main/dreamvoice/ckpts/dreamvc_base.pt'
+
+dreamvg:
+  config_path: 'src/configs/plugin_cross.yaml'
+  ckpt_path: 'ckpts/dreamvc_plugin.pt'
+  ckpt_url: 'https://huggingface.co/myshell-ai/DreamVoice/resolve/main/dreamvoice/ckpts/dreamvc_plugin.pt'

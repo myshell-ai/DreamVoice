@@ -1,0 +1,33 @@
+version: 1.0
+
+system: "cross"
+
+diffwrap:
+  cls_embedding:
+    content_dim: 768
+    content_hidden: 256
+    use_pitch: true
+    pitch_dim: 1
+    pitch_hidden: 128
+
+  unet:  
+    sample_size: [100, 256]
+    in_channels: 385
+    out_channels: 1
+    layers_per_block: 2
+    block_out_channels: [128, 256, 512]
+    down_block_types:
+      [
+        "DownBlock2D",
+        "CrossAttnDownBlock2D",
+        "CrossAttnDownBlock2D",
+      ]
+    up_block_types:
+      [
+        "CrossAttnUpBlock2D",
+        "CrossAttnUpBlock2D",
+        "UpBlock2D",
+      ]
+    attention_head_dim: 32
+    cross_attention_dim: 768
+    

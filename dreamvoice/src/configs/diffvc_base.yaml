@@ -1,0 +1,47 @@
+version: 1.0
+
+system: "base"
+
+model:
+  cls_embedding:
+    speaker_dim: 256
+    feature_dim: 512
+    content_dim: 768
+    content_hidden: 256
+    use_pitch: false
+
+  unet:  
+    sample_size: [128, 256]
+    in_channels: 257
+    out_channels: 1
+    layers_per_block: 2
+    block_out_channels: [128, 256, 256, 512]
+    down_block_types:
+      [
+        "DownBlock2D",
+        "DownBlock2D",
+        "AttnDownBlock2D",
+        "AttnDownBlock2D",
+      ]
+    up_block_types:
+      [
+        "AttnUpBlock2D",
+        "AttnUpBlock2D",
+        "UpBlock2D",
+        "UpBlock2D"
+      ]
+    attention_head_dim: 32
+    class_embed_type: 'identity'
+
+scheduler:
+  num_train_steps: 1000
+  beta_schedule: 'linear'
+  beta_start: 0.0001
+  beta_end: 0.02
+  num_infer_steps: 50
+  rescale_betas_zero_snr: true
+  timestep_spacing: "trailing"
+  clip_sample: false
+  prediction_type: 'v_prediction'
+  scale: 2.75
+  shift: 5.80
