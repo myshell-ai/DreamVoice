@@ -1,0 +1,12 @@
+torch
+torchaudio
+transformers==4.38.2
+diffusers==0.26.3
+einops==0.8.0
+PyYAML==6.0
+pyworld==0.3.4
+librosa==0.10.1
+soundfile==0.12.1
+numpy
+pandas
+gradio
