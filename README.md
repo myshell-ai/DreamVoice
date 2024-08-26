@@ -15,7 +15,7 @@ For more details, please check our interspeech paper: [DreamVoice](https://arxiv
 
 ## Demo
 
-🎵 Listen to [examples](https://mydemo.page)
+🎵 Listen to [examples](https://research.myshell.ai/dreamvoice)
 
 
 ## Installation
@@ -31,7 +31,13 @@ cd DreamVoice
 pip install -r requirements.txt
 ```
 
-## Usage
+## Gradio Demo
+
+```
+python gradio_demo.py
+```
+
+## API Usage
 
 You can use the model with the following code:
 
