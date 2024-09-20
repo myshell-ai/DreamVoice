@@ -11,12 +11,10 @@ DreamVoice is an innovative approach to voice conversion (VC) that leverages tex
 Unlike traditional VC methods, which require a target recording during inference, DreamVoice introduces a more intuitive solution by allowing users to specify desired voice timbres through text prompts.
 
 For more details, please check our InterSpeech paper: [DreamVoice](https://arxiv.org/abs/2406.16314)  
-For the DreamVoice Dataset, please check: [DreamVoiceDB](https://huggingface.co/datasets/carankt/DreamVoiceDB), [Dataset Appendix](https://dreamvoiceconversion.github.io/dataset.html)
 
 ## Demo
 
-🎵 Listen to [examples](https://research.myshell.ai/dreamvoice)
-
+🎧 Listen to examples and download our dataset on DreamVoice's [Homepage](https://research.myshell.ai/dreamvoice)
 
 ## Installation
 
