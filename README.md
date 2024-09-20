@@ -10,8 +10,8 @@
 DreamVoice is an innovative approach to voice conversion (VC) that leverages text-guided generation to create personalized and versatile voice experiences. 
 Unlike traditional VC methods, which require a target recording during inference, DreamVoice introduces a more intuitive solution by allowing users to specify desired voice timbres through text prompts.
 
-For more details, please check our interspeech paper: [DreamVoice](https://arxiv.org/abs/2406.16314)
-
+For more details, please check our InterSpeech paper: [DreamVoice](https://arxiv.org/abs/2406.16314)  
+For the DreamVoice Dataset, please check: [DreamVoiceDB](https://huggingface.co/datasets/carankt/DreamVoiceDB), [Dataset Appendix](https://dreamvoiceconversion.github.io/dataset.html)
 
 ## Demo
 
